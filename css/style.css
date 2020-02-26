@@ -26,7 +26,8 @@ h1, h2, h3, h4, h5,
 
 .border-2 {
   border-width: 2px; }
-
+.error {
+  color: #FF0000;}
 .text-black {
   color: #000 !important; }
 

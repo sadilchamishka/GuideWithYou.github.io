@@ -28,6 +28,7 @@
   </head>
   <body>
 
+
   <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -126,43 +127,87 @@
         <div class="row">
           <div class="col-md-7 mb-5">
 
+<?php
+// these variables for error messeges
+    $nameErr = $emailErr = $phoneErr = $websiteErr = "";
+    $name = $email = $gender = $comment = $website = "";
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      if (empty($_POST["fname"])) {
+        $nameErr = "Name is required";
+      } else {
+        $name = test_input($_POST["fname"]);
+      }
 
-            <form action="#" class="p-5 bg-white">
+      if (empty($_POST["email"])) {
+        $emailErr = "Email is required";
+      } else {
+        $email = test_input($_POST["email"]);
+      }
 
+      // if (empty($_POST["website"])) {
+      //   $website = "";
+      // } else {
+      //   $website = test_input($_POST["website"]);
+      // }
 
+      // if (empty($_POST["comment"])) {
+      //   $comment = "";
+      // } else {
+      //   $comment = test_input($_POST["comment"]);
+      // }
+
+      if (empty($_POST["phone"])) {
+        $phoneErr = "Contact number is required";
+      } else {
+        $phone = test_input($_POST["phone"]);
+      }
+    }
+
+    function test_input($data) {
+      $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
+      return $data;
+    }
+?>
+
+            <form action="" class="p-5 bg-white" method="post">
+
+              <p><span class="error">* required fields</span></p>
               <div class="row form-group">
                 <div class="col-md-6 mb-3 mb-md-0">
-                  <label class="text-black" for="fname">First Name</label>
+                  <label class="text-black" for="fname">First Name<span class="error"> *</span></label>
                   <input type="text" id="fname" class="form-control" placeholder="First Name">
+
                 </div>
                 <div class="col-md-6">
-                  <label class="text-black" for="lname">Last Name</label>
+                  <label class="text-black" for="lname">Last Name<span class="error"> *</span></label>
                   <input type="text" id="lname" class="form-control" placeholder="Last Name">
                 </div>
               </div>
 
               <div class="row form-group">
                 <div class="col-md-6 mb-3 mb-md-0">
-                  <label class="text-black" for="date">Date of Travel</label>
+                  <label class="text-black" for="date">Date of Travel<span class="error"> *</span></label>
                   <input type="text" id="date" class="form-control datepicker px-2" placeholder="Date of visit">
                 </div>
                 <div class="col-md-6">
-                  <label class="text-black" for="email">Email</label>
+                  <label class="text-black" for="email">Email<span class="error"> *</span></label>
                   <input type="email" id="email" class="form-control" placeholder="Email" required autocomplete="email">
                 </div>
               </div>
 
 	     <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="text-black" for="phone">Phone</label>
+                  <label class="text-black" for="phone">Phone<span class="error"> *</span></label>
                   <input type="tel" name="phone" id="phone" class="form-control" placeholder="+1-650-450-1212" required autocomplete="tel">
                 </div>
               </div>
 
               <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="text-black" for="treatment">How Many Person</label>
+                  <label class="text-black" for="treatment">How Many Person<span class="error"> *</span></label>
                   <select name="treatment" id="treatment" class="form-control">
                     <option value="">1</option>
                     <option value="">2</option>
@@ -175,13 +220,13 @@
 
               <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="text-black" for="treatment">Destination</label>
+                  <label class="text-black" for="treatment">Destination<span class="error"> *</span></label>
                   <select name="treatment" id="treatment" class="form-control">
-                    <option value="">Japan</option>
-                    <option value="">Europe</option>
-                    <option value="">China</option>
-                    <option value="">France</option>
-                    <option value="">Philippines</option>
+                    <option value="1">Japan</option>
+                    <option value="2">Europe</option>
+                    <option value="3">China</option>
+                    <option value="4">France</option>
+                    <option value="5">Philippines</option>
                   </select>
                 </div>
               </div>
@@ -190,6 +235,9 @@
                 <div class="col-md-12">
                   <label class="text-black" for="note">Notes</label>
                   <textarea name="note" id="note" cols="30" rows="5" class="form-control" placeholder="Write your notes or questions here..."></textarea>
+                  <br>
+                  <input type="checkbox" id="privacy" name="privacy" value="privacy">
+                  <label for="privacy">   I Agree to the all conditions in <a href="privacy.html">Privacy Policy</a></label>
                 </div>
               </div>
 
@@ -209,7 +257,7 @@
             <div class="p-4 mb-3 bg-white">
               <img src="images/hero_bg_1.jpg" alt="Image" class="img-fluid mb-4 rounded">
               <h3 class="h5 text-black mb-3">More Info about Your Tour</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ad iure porro mollitia architecto hic consequuntur. Distinctio nisi perferendis dolore, ipsa consectetur? Fugiat quaerat eos qui, libero neque sed nulla.</p>
+              <p>Travel with a best experienced professional guide will double your happiness and experience. Click here to get more details about your trip and more.</p>
               <p><a href="#" class="btn btn-primary px-4 py-2 text-white">Learn More</a></p>
             </div>
 
@@ -267,7 +315,7 @@
 
               <form action="#" method="post">
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control border-secondary text-white bg-transparent" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
+                  <input type="text" class="form-control border-secondary text-white bg-transparent" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2" required autocomplete="email">
                   <div class="input-group-append">
                     <button class="btn btn-primary text-white" type="button" id="button-addon2">Send</button>
                   </div>
