@@ -129,14 +129,20 @@
 
 <?php
 // these variables for error messeges
-    $nameErr = $emailErr = $phoneErr = $websiteErr = "";
-    $name = $email = $gender = $comment = $website = "";
+    $nameErr = $emailErr = $phoneErr = $websiteErr = $privacyErr = "";
+    $fname = $lname = $email = $phone = $comment = $website = $privacy = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if (empty($_POST["fname"])) {
         $nameErr = "Name is required";
       } else {
-        $name = test_input($_POST["fname"]);
+        $fname = test_input($_POST["fname"]);
+      }
+
+      if (empty($_POST["lname"])) {
+        $nameErr = "Name is required";
+      } else {
+        $lname = test_input($_POST["lname"]);
       }
 
       if (empty($_POST["email"])) {
@@ -145,17 +151,11 @@
         $email = test_input($_POST["email"]);
       }
 
-      // if (empty($_POST["website"])) {
-      //   $website = "";
-      // } else {
-      //   $website = test_input($_POST["website"]);
-      // }
-
-      // if (empty($_POST["comment"])) {
-      //   $comment = "";
-      // } else {
-      //   $comment = test_input($_POST["comment"]);
-      // }
+      if (empty($_POST["privacy"])) {
+        $privacyErr = "Agreement is required";
+      } else {
+        $privacy = test_input($_POST["privacy"]);
+      }
 
       if (empty($_POST["phone"])) {
         $phoneErr = "Contact number is required";
@@ -172,35 +172,36 @@
     }
 ?>
 
-            <form action="" class="p-5 bg-white" method="post">
+            <form class="p-5 bg-white" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
 
               <p><span class="error">* required fields</span></p>
               <div class="row form-group">
                 <div class="col-md-6 mb-3 mb-md-0">
-                  <label class="text-black" for="fname">First Name<span class="error"> *</span></label>
-                  <input type="text" id="fname" class="form-control" placeholder="First Name">
+                  <label class="text-black" for="fname">First Name<span class="error">* <?php echo $nameErr;?></span></label>
+                  <input type="text" id="fname" class="form-control" placeholder="First Name" required autocomplete="fname">
 
                 </div>
                 <div class="col-md-6">
-                  <label class="text-black" for="lname">Last Name<span class="error"> *</span></label>
-                  <input type="text" id="lname" class="form-control" placeholder="Last Name">
+                  <label class="text-black" for="lname">Last Name<span class="error">* <?php echo $nameErr;?></span></label>
+                  <input type="text" id="lname" class="form-control" placeholder="Last Name" required autocomplete="lname">
                 </div>
               </div>
 
               <div class="row form-group">
                 <div class="col-md-6 mb-3 mb-md-0">
-                  <label class="text-black" for="date">Date of Travel<span class="error"> *</span></label>
+                  <label class="text-black" for="date">Date of Travel<span class="error">* <?php echo $emailErr;?></span></label>
                   <input type="text" id="date" class="form-control datepicker px-2" placeholder="Date of visit">
                 </div>
                 <div class="col-md-6">
-                  <label class="text-black" for="email">Email<span class="error"> *</span></label>
+                  <label class="text-black" for="email">Email<span class="error">* <?php echo $emailErr;?></span></label>
+
                   <input type="email" id="email" class="form-control" placeholder="Email" required autocomplete="email">
                 </div>
               </div>
 
 	     <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="text-black" for="phone">Phone<span class="error"> *</span></label>
+                  <label class="text-black" for="phone">Phone<span class="error">* <?php echo $phoneErr;?></span></label>
                   <input type="tel" name="phone" id="phone" class="form-control" placeholder="+1-650-450-1212" required autocomplete="tel">
                 </div>
               </div>
@@ -243,7 +244,7 @@
 
               <div class="row form-group">
                 <div class="col-md-12">
-                  <input type="submit" value="Send" class="btn btn-primary py-2 px-4 text-white">
+                  <input type="submit" name="submit" value="Send" class="btn btn-primary py-2 px-4 text-white">
                 </div>
               </div>
 
