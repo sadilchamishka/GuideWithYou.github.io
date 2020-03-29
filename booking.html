@@ -184,19 +184,19 @@
               <div class="row form-group">
                 <div class="col-md-6 mb-3 mb-md-0">
                   <label class="text-black" for="fname">First Name<span class="error">* <?php echo $nameErr;?></span></label>
-                  <input type="text" id="fname" class="form-control" placeholder="First Name" required autocomplete="fname">
+                  <input type="text" name="fname" id="fname" class="form-control" placeholder="First Name" required autocomplete="fname">
 
                 </div>
                 <div class="col-md-6">
                   <label class="text-black" for="lname">Last Name<span class="error">* <?php echo $nameErr;?></span></label>
-                  <input type="text" id="lname" class="form-control" placeholder="Last Name" required autocomplete="lname">
+                  <input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name" required autocomplete="lname">
                 </div>
               </div>
 
               <div class="row form-group">
                 <div class="col-md-6 mb-3 mb-md-0">
                   <label class="text-black" for="date">Date of Travel<span class="error">* <?php echo $emailErr;?></span></label>
-                  <input type="text" id="dateOfTravel" class="form-control datepicker px-2" placeholder="Date of visit">
+                  <input type="text" name="dateOfTravel" id="dateOfTravel" class="form-control datepicker px-2" placeholder="Date of visit">
                 </div>
                 <div class="col-md-6">
                   <label class="text-black" for="email">Email<span class="error">* <?php echo $emailErr;?></span></label>
@@ -215,7 +215,7 @@
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="treatment">How Many Person<span class="error"> *</span></label>
-                  <select name="treatment" id="persons" class="form-control">
+                  <select name="persons" id="persons" class="form-control">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -228,7 +228,7 @@
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="treatment">Destination<span class="error"> *</span></label>
-                  <select name="treatment" id="city" class="form-control">
+                  <select name="city" id="city" class="form-control">
                     <option value="1">Japan</option>
                     <option value="2">Europe</option>
                     <option value="3">China</option>
@@ -241,7 +241,7 @@
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="treatment"><span class="error"> </span></label>
-                  <select name="treatment" id="place" class="form-control">
+                  <select name="place" id="place" class="form-control">
                     <option value="1">Japan</option>
                     <option value="2">Europe</option>
                     <option value="3">China</option>
@@ -254,7 +254,7 @@
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="treatment">Days Hope to Spend<span class="error"> *</span></label>
-                  <select name="treatment" id="daysSpend" class="form-control">
+                  <select name="daysSpend" id="daysSpend" class="form-control">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
