@@ -172,7 +172,13 @@
     }
 ?>
 
-            <form class="p-5 bg-white" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+<!--
+<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>
+-->
+
+
+
+            <form class="p-5 bg-white" method="post" action="data.php">
 
               <p><span class="error">* required fields</span></p>
               <div class="row form-group">
@@ -190,7 +196,7 @@
               <div class="row form-group">
                 <div class="col-md-6 mb-3 mb-md-0">
                   <label class="text-black" for="date">Date of Travel<span class="error">* <?php echo $emailErr;?></span></label>
-                  <input type="text" id="date" class="form-control datepicker px-2" placeholder="Date of visit">
+                  <input type="text" id="dateOfTravel" class="form-control datepicker px-2" placeholder="Date of visit">
                 </div>
                 <div class="col-md-6">
                   <label class="text-black" for="email">Email<span class="error">* <?php echo $emailErr;?></span></label>
@@ -209,12 +215,12 @@
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="treatment">How Many Person<span class="error"> *</span></label>
-                  <select name="treatment" id="treatment" class="form-control">
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
-                    <option value="">5+</option>
+                  <select name="treatment" id="persons" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5+</option>
                   </select>
                 </div>
               </div>
@@ -222,7 +228,7 @@
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="treatment">Destination<span class="error"> *</span></label>
-                  <select name="treatment" id="treatment" class="form-control">
+                  <select name="treatment" id="city" class="form-control">
                     <option value="1">Japan</option>
                     <option value="2">Europe</option>
                     <option value="3">China</option>
@@ -231,6 +237,38 @@
                   </select>
                 </div>
               </div>
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="text-black" for="treatment"><span class="error"> </span></label>
+                  <select name="treatment" id="place" class="form-control">
+                    <option value="1">Japan</option>
+                    <option value="2">Europe</option>
+                    <option value="3">China</option>
+                    <option value="4">France</option>
+                    <option value="5">Philippines</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="text-black" for="treatment">Days Hope to Spend<span class="error"> *</span></label>
+                  <select name="treatment" id="daysSpend" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="2w">2 Weeks</option>
+                    <option value="3w">3 Weeks</option>
+                    <option value="1m">1 Month</option>
+                  </select>
+                </div>
+              </div>
+
 
               <div class="row form-group">
                 <div class="col-md-12">
